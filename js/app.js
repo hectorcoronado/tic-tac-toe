@@ -4,18 +4,24 @@ $(document).ready(function() {
 // goes inside this function
 
 var clickCounter = 0; //This variable will keep track of player turn
-var gameBoard = []; //
+// maybe keep track of plays inside this array to check win/draw condition?
+var gameBoard = ['.','.','.','.','.','.','.','.','.','.',]; //
 
 $('.box').on('click', function handleClick(event) {
-   if ( $(this).length === 0) {
-    	if ( clickCounter % 2 === 0) {
-       		$(this).text('X');
-       		clickCounter++;
-    	} else if ( clickCounter % 2 !== 0) {
-        		$(this).text('O');
-        		clickCounter++;
-    		}
-   } 
+   console.log("This is our text in this box: " + $(this).text());
+   if ( $(this).text() === '') {
+      	if ( clickCounter % 2 === 0) {
+         		$(this).text('X');
+               // add 'X' to the id's index in your gameBoard Array
+         		clickCounter++;
+               console.log(gameBoard);
+      	} else if ( clickCounter % 2 !== 0) {
+          		$(this).text('O');
+          		clickCounter++;
+      	}
+   } else {
+      console.log("I already have text in me!");
+   }
 });
 
 
@@ -26,6 +32,6 @@ automatically result in a drawn game.
 
 else if (clickCounter > 8) {
    	alert("Game drawn!");
-   } 
+   }
 
 */
