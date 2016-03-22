@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 var clickCounter = 0; //This variable will keep track of player turn
 var gameBoard = ['.','.','.','.','.','.','.','.','.'];
- //Index/id       0   1   2   3   4   5   6   7   8
+ //arrIndex/id    0   1   2   3   4   5   6   7   8
  //This array will track X's and O's to determine winner
 
 $('.box').on('click', function handleClick(event) {
@@ -57,6 +57,17 @@ $('.box').on('click', function checkWinner(event) {
             } else if (clickCounter > 8) {
               alert("Draw!");
             }
+  });
+
+
+  $(function() {
+    $(".btn").click(function() {
+      $('.box').text('');
+      var clickCounter = 0; // Reverts to 0
+      var gameBoard = ['.','.','.','.','.','.','.','.','.']; //Clears out array
+      alert('New game!');
+      console.log (gameBoard);
+    });
   });
 
 });
