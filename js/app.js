@@ -1,12 +1,7 @@
-// wait for the DOM to finish loading
 $(document).ready(function() {
-// all code to manipulate the DOM
-// goes inside this function
 
 var clickCounter = 0; //This variable will keep track of player turn
-var gameBoard = ['.','.','.','.','.','.','.','.','.'];
- //arrIndex/id    0   1   2   3   4   5   6   7   8
- //This array will track X's and O's to determine winner
+var gameBoard = [];
 
 $('.box').on('click', function handleClick(event) {
    if ( $(this).text() === '') {
@@ -63,9 +58,9 @@ $('.box').on('click', function checkWinner(event) {
   $(function() {
     $(".btn").click(function() {
       $('.box').text('');
-      var clickCounter = 0; // Reverts to 0
-      var gameBoard = ['.','.','.','.','.','.','.','.','.']; //Clears out array
       alert('New game!');
+      clickCounter = 0; // Reverts to 0
+      gameBoard = []; //Clears out array
       console.log (gameBoard);
     });
   });
