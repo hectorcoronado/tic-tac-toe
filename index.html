@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <!-- google fonts -->
-  <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
+ <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700|Inconsolata:400,700|Rubik+One' rel='stylesheet' type='text/css'>
+ 
   <!-- custom stylesheet -->
   <link rel="stylesheet" type="text/css" href="css/style.css" />
 
@@ -73,7 +73,7 @@
           Player Names
         </button>
         <button class="btn btn-default navbar-btn" id="reset">Reset Game!</button>
-        <button class="btn btn-default navbar-btn" id="about">About</button>
+        <button class="btn btn-default navbar-btn" data-toggle="modal" data-target="#aboutModal">About</button>
       </div>
     </nav>
   </div>
@@ -106,14 +106,22 @@
   </div>
 
   <!-- about modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal fade modal-sm" id="aboutModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-header">
+            <h3>About this project:</h3>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li><strong>Created by:</strong> Hector Coronado</li>
+            <li><strong>GitHub:</strong><a href="https://github.com/hectorcoronado/tic-tac-toe"> Tic-Tac-Toe</a></li>
+            <li>This project was completed on my first week of General Assembly's Web Development Immersive class. It was primarily intended to teach us to use: <strong> HTML, CSS, Bootstrap, JavaScript</strong> and <strong>jQuery</strong>.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
