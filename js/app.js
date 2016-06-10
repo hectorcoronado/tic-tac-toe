@@ -1,68 +1,71 @@
 $(document).ready(function() {
 
-var clickCounter = 0; //This variable will keep track of player turn
-var gameBoard = [];
+  var clickCount = 0;
+  var board = [];
 
-$('.box').on('click', function handleClick(event) {
-   if ( $(this).text() === '') {
-    	if ( clickCounter % 2 === 0) {
-       		$(this).text('X');
-          var cellX = parseInt( $(this).attr('id') ); //parseInt method turns 'X' string added to .box to index/id #
-          gameBoard[cellX] = 'X'; //so that 'X's can be assigned to gameBoard at index/id #
-          console.log(gameBoard); //Keep track of current board state
-       		clickCounter++;
-    	} else if ( clickCounter % 2 !== 0) {
-        		$(this).text('O');
-            var cellY = parseInt( $(this).attr('id') );
-            gameBoard[cellY] = 'O'; //as above (line 16), so that 'Y' can be assigned to gameBoard at index/id number
-            console.log(gameBoard); //Keep track of current board state
-        		clickCounter++;
-    		}
-   }
-});
-$('.box').on('click', function checkWinner(event) {
+  $('.box').on('click', function handleClick(event) {
+    if ($(this).text() === '') {
+      var cell = parseInt($(this).attr('id'));
+      if (clickCount % 2 === 0) {
+        $(this).text('X');
+        board[cell] = 'X';
+      } else {
+        $(this).text('O');
+        board[cell] = 'O';
+      }
+      clickCount++;
+      checkWinner();
+    }
+  });
+
+  $("#namesForm").on("submit", function(event) {
+    event.preventDefault();
+    var player1Name = $("#player1Name").val(),
+        player2Name = $("#player2Name").val();
+    $("#player1").html(player1Name);
+    $("#player2").html(player2Name);
+    $("#playerNamesModal").modal("toggle");
+  });
+
+  $("#reset").on("click", function() {
+    resetGame();
+  });
+
+  function resetGame(){
+    $('.box').text("");
+    clickCount = 0;
+    board = [];
+  }
+
+
+  function checkWinner() {
     if (
-          ( (gameBoard[0]==='X' && gameBoard[1] === 'X') && (gameBoard[2] === 'X') ) ||
-          ( (gameBoard[3]==='X' && gameBoard[4] === 'X') && (gameBoard[5] === 'X') ) ||
-          ( (gameBoard[6]==='X' && gameBoard[7] === 'X') && (gameBoard[8] === 'X') ) ||
-          ( (gameBoard[0]==='X' && gameBoard[3] === 'X') && (gameBoard[6] === 'X') ) ||
-          ( (gameBoard[1]==='X' && gameBoard[4] === 'X') && (gameBoard[7] === 'X') ) ||
-          ( (gameBoard[2]==='X' && gameBoard[5] === 'X') && (gameBoard[8] === 'X') ) ||
-          ( (gameBoard[0]==='X' && gameBoard[4] === 'X') && (gameBoard[8] === 'X') ) ||
-          ( (gameBoard[6]==='X' && gameBoard[4] === 'X') && (gameBoard[2] === 'X') )
-
-        ) {
-
-            alert("Player X wins!");
-
+      ((board[0] === 'X' && board[1] === 'X') && (board[2] === 'X')) ||
+      ((board[3] === 'X' && board[4] === 'X') && (board[5] === 'X')) ||
+      ((board[6] === 'X' && board[7] === 'X') && (board[8] === 'X')) ||
+      ((board[0] === 'X' && board[3] === 'X') && (board[6] === 'X')) ||
+      ((board[1] === 'X' && board[4] === 'X') && (board[7] === 'X')) ||
+      ((board[2] === 'X' && board[5] === 'X') && (board[8] === 'X')) ||
+      ((board[0] === 'X' && board[4] === 'X') && (board[8] === 'X')) ||
+      ((board[6] === 'X' && board[4] === 'X') && (board[2] === 'X'))
+    ) {
+      alert("Player X wins!");
+      resetGame();
     } else if (
-
-            ( (gameBoard[0]==='O' && gameBoard[1] === 'O') && (gameBoard[2] === 'O') ) ||
-            ( (gameBoard[3]==='O' && gameBoard[4] === 'O') && (gameBoard[5] === 'O') ) ||
-            ( (gameBoard[6]==='O' && gameBoard[7] === 'O') && (gameBoard[8] === 'O') ) ||
-            ( (gameBoard[0]==='O' && gameBoard[3] === 'O') && (gameBoard[6] === 'O') ) ||
-            ( (gameBoard[1]==='O' && gameBoard[4] === 'O') && (gameBoard[7] === 'O') ) ||
-            ( (gameBoard[2]==='O' && gameBoard[5] === 'O') && (gameBoard[8] === 'O') ) ||
-            ( (gameBoard[0]==='O' && gameBoard[4] === 'O') && (gameBoard[8] === 'O') ) ||
-            ( (gameBoard[6]==='O' && gameBoard[4] === 'O') && (gameBoard[2] === 'O') )
-
-      ) {
-              alert("Player O wins!");
-
-            } else if (clickCounter > 8) {
-              alert("Draw!");
-            }
-  });
-
-
-  $(function() {
-    $(".btn").click(function() {
-      $('.box').text('');
-      alert('New game!');
-      clickCounter = 0; // Reverts to 0
-      gameBoard = []; //Clears out array
-      console.log (gameBoard);
-    });
-  });
+      ((board[0] === 'O' && board[1] === 'O') && (board[2] === 'O')) ||
+      ((board[3] === 'O' && board[4] === 'O') && (board[5] === 'O')) ||
+      ((board[6] === 'O' && board[7] === 'O') && (board[8] === 'O')) ||
+      ((board[0] === 'O' && board[3] === 'O') && (board[6] === 'O')) ||
+      ((board[1] === 'O' && board[4] === 'O') && (board[7] === 'O')) ||
+      ((board[2] === 'O' && board[5] === 'O') && (board[8] === 'O')) ||
+      ((board[0] === 'O' && board[4] === 'O') && (board[8] === 'O')) ||
+      ((board[6] === 'O' && board[4] === 'O') && (board[2] === 'O'))
+    ) {
+      alert("Player O wins!");
+      resetGame();
+    } else if (clickCount > 8) {
+      alert("Draw! Hit the 'Reset!' button to play again!");
+    }
+  }
 
 });

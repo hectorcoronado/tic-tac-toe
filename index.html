@@ -1,63 +1,123 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset="UTF-8">
+
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Bootstrap CSS from CDN -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <!-- google fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-    <!-- link to custom stylesheet (always require after Bootstrap) -->
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  <!-- custom stylesheet -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-    <!-- jQuery from CDN -->
-    <script src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
 
-    <!-- Bootstrap CSS from CDN Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <!-- bootstrap js -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <!-- link to custom javascript file (always require after external JS libraries) -->
-    <script src="js/app.js"></script>
+  <!-- custom script -->
+  <script src="js/app.js"></script>
 
-    <title>Tic Tac Toe</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h1>Tic Tac Toe</h1>
-          <hr>
-        </div>
+  <title>Tic Tac Toe</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1>tic tac toe</h1>
+        <hr>
       </div>
-        <div class="row">
-          <!-- a column represents our game board -->
-          <!-- the `offset` class helps us center the board -->
-          <div class="col-md-6 col-md-offset-3" id="board">
+    </div>
+    <div class="col-md-6 col-md-offset-3" id="board">
+      <div class="row text-center">
+        <div class="col-xs-4 box" id="0"></div>
+        <div class="col-xs-4 box" id="1"></div>
+        <div class="col-xs-4 box" id="2"></div>
+      </div>
+      <div class="row text-center">
+        <div class="col-xs-4 box" id="3"></div>
+        <div class="col-xs-4 box" id="4"></div>
+        <div class="col-xs-4 box" id="5"></div>
+      </div>
+      <div class="row text-center">
+        <div class="col-xs-4 box" id="6"></div>
+        <div class="col-xs-4 box" id="7"></div>
+        <div class="col-xs-4 box" id="8"></div>
+      </div>
+    </div>
+  </div>
 
-            <!-- you can put rows inside of columns! -->
-            <!-- Bootstrap subdivides these 'nested' rows into 12 columns, too! -->
-            <div class="row">
-              <div class="col-md-4 box" id="0"></div>
-              <div class="col-md-4 box" id="1"></div>
-              <div class="col-md-4 box" id="2"></div>
+  <div class="row text-center">
+    <div class="col-md-12">
+      <h2>
+        <span id="player1"></span>
+        <span>(X)</span>
+        vs
+        <span id="player2"></span>
+        <span>(O)</span>
+      </h2>
+    </div>
+  </div>
+
+  <div class="container">
+    <nav class="navbar navbar-fixed-bottom navbar-inverse text-center">
+      <div class="btn-group" role="group">
+        <button class="btn btn-default navbar-btn" data-toggle="modal" data-target="#playerNamesModal">
+          Player Names
+        </button>
+        <button class="btn btn-default navbar-btn" id="reset">Reset Game!</button>
+        <button class="btn btn-default navbar-btn" id="about">About</button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- player names modal -->
+  <div class="modal fade modal-sm" id="playerNamesModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Enter your names:</h3>
+        </div>
+        <form role="form" id="namesForm">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="playerX">Player 1</label>
+              <input type="text" class="form-control" id="player1Name" placeholder="Enter your name">
             </div>
-            <div class="row">
-              <div class="col-md-4 box" id="3"></div>
-              <div class="col-md-4 box" id="4"></div>
-              <div class="col-md-4 box" id="5"></div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 box" id="6"></div>
-              <div class="col-md-4 box" id="7"></div>
-              <div class="col-md-4 box" id="8"></div>
+            <div class="form-group">
+              <label for="playerO">Player 2</label>
+              <input type="text" class="form-control" id="player2Name" placeholder="Enter your name">
             </div>
           </div>
-        </div>
-      <button class="btn btn-success">Reset!</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit Names</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </body>
+  </div>
+
+  <!-- about modal -->
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
 </html>

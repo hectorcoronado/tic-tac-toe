@@ -1,12 +1,42 @@
+/*
+font-families: 'Anonymous Pro';
+               'Inconsolata';
+*/
+
 #board {
   margin-top: 10px;
+}
+
+
+button {
+	position: center;
+  font-family: 'Anonymous Pro';
+  font-weight: lighter;
+
+}
+
+h1  {
+  font-family: 'Anonymous Pro';
+  font-weight: bold;
+  font-size: 64pt;
+}
+
+h2 {
+  font-family: 'Inconsolata';
+  font-size: 32pt;
+}
+
+.modal {
+  font-family: 'Inconsolata';
 }
 
 .box {
   border: 1px solid black;
   height: 150px;
-}
-
-.button {
-	position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Anonymous Pro';
+  font-size: 32pt;
+  font-weight: bold;
 }
