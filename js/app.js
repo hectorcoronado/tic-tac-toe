@@ -7,10 +7,10 @@ $(document).ready(function() {
     if ($(this).text() === '') {
       var cell = parseInt($(this).attr('id'));
       if (clickCount % 2 === 0) {
-        $(this).text('X');
+        $(this).text('X').addClass('blue');
         board[cell] = 'X';
       } else {
-        $(this).text('O');
+        $(this).text('O').addClass('red');
         board[cell] = 'O';
       }
       clickCount++;
@@ -18,24 +18,18 @@ $(document).ready(function() {
     }
   });
 
-  $("#namesForm").on("submit", function(event) {
+  $('#namesForm').on('submit', function(event) {
     event.preventDefault();
-    var player1Name = $("#player1Name").val(),
-        player2Name = $("#player2Name").val();
-    $("#player1").html(player1Name);
-    $("#player2").html(player2Name);
-    $("#playerNamesModal").modal("toggle");
+    var player1Name = $('#player1Name').val(),
+        player2Name = $('#player2Name').val();
+    $('#player1').html(player1Name);
+    $('#player2').html(player2Name);
+    $('#playerNamesModal').modal('toggle');
   });
 
-  $("#reset").on("click", function() {
+  $('#reset').on('click', function() {
     resetGame();
   });
-
-  function resetGame(){
-    $('.box').text("");
-    clickCount = 0;
-    board = [];
-  }
 
 
   function checkWinner() {
@@ -49,7 +43,7 @@ $(document).ready(function() {
       ((board[0] === 'X' && board[4] === 'X') && (board[8] === 'X')) ||
       ((board[6] === 'X' && board[4] === 'X') && (board[2] === 'X'))
     ) {
-      alert("Player X wins!");
+      alert('Player X wins!');
       resetGame();
     } else if (
       ((board[0] === 'O' && board[1] === 'O') && (board[2] === 'O')) ||
@@ -61,11 +55,17 @@ $(document).ready(function() {
       ((board[0] === 'O' && board[4] === 'O') && (board[8] === 'O')) ||
       ((board[6] === 'O' && board[4] === 'O') && (board[2] === 'O'))
     ) {
-      alert("Player O wins!");
+      alert('Player O wins!');
       resetGame();
     } else if (clickCount > 8) {
       alert("Draw! Hit the 'Reset!' button to play again!");
     }
+  }
+
+  function resetGame(){
+    $('.box').text('');
+    clickCount = 0;
+    board = [];
   }
 
 });

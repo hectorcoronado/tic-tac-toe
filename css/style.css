@@ -7,18 +7,31 @@ font-families: 'Anonymous Pro';
   margin-top: 10px;
 }
 
-
-button {
-	position: center;
-  font-family: 'Anonymous Pro';
-  font-weight: lighter;
-
+body {
+  background-image:
+    linear-gradient(
+      to right,
+      #E7E2DD,
+      #F4F1EE 50%,
+      #E7E2DD
+      );
 }
 
-h1  {
+button {
+  position: center;
+  font-family: 'Anonymous Pro';
+  font-weight: lighter;
+}
+
+.btn {
+  background-color: #BBBBBB;
+}
+
+h1 {
   font-family: 'Anonymous Pro';
   font-weight: bold;
-  font-size: 64pt;
+  font-size: 72pt;
+  color: #207674;
 }
 
 h2 {
@@ -26,8 +39,13 @@ h2 {
   font-size: 32pt;
 }
 
+.navbar {
+  background-color: #AAAAAA;
+}
+
 .modal {
   font-family: 'Inconsolata';
+  margin: auto;
 }
 
 .box {
@@ -36,7 +54,14 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Anonymous Pro';
-  font-size: 32pt;
+  font-family: 'Rubik One', sans-serif;  font-size: 46pt;
   font-weight: bold;
+}
+
+.blue {
+  color: #678CA3;
+}
+
+.red {
+  color: #891414;
 }
