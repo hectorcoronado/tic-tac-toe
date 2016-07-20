@@ -1,7 +1,9 @@
 $(document).ready(function() {
 
-  var clickCount = 0;
-  var board = [];
+  var clickCount = 0,
+      board = [],
+      player1Name,
+      player2Name
 
   $('.box').on('click', function handleClick(event) {
     if ($(this).text() === '') {
@@ -20,8 +22,8 @@ $(document).ready(function() {
 
   $('#namesForm').on('submit', function(event) {
     event.preventDefault();
-    var player1Name = $('#player1Name').val(),
-        player2Name = $('#player2Name').val();
+    player1Name = $('#player1Name').val();
+    player2Name = $('#player2Name').val();
     $('#player1').html(player1Name);
     $('#player2').html(player2Name);
     $('#playerNamesModal').modal('toggle');
@@ -43,7 +45,7 @@ $(document).ready(function() {
       ((board[0] === 'X' && board[4] === 'X') && (board[8] === 'X')) ||
       ((board[6] === 'X' && board[4] === 'X') && (board[2] === 'X'))
     ) {
-      alert('Player X wins!');
+      alert(player1Name + ' wins!');
       resetGame();
     } else if (
       ((board[0] === 'O' && board[1] === 'O') && (board[2] === 'O')) ||
@@ -55,7 +57,7 @@ $(document).ready(function() {
       ((board[0] === 'O' && board[4] === 'O') && (board[8] === 'O')) ||
       ((board[6] === 'O' && board[4] === 'O') && (board[2] === 'O'))
     ) {
-      alert('Player O wins!');
+      alert(player2Name + ' wins!');
       resetGame();
     } else if (clickCount > 8) {
       alert("Draw! Hit the 'Reset!' button to play again!");
