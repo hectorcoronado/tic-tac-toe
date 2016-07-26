@@ -41,3 +41,5 @@ This was our first week's weekend assignment; our purpose was to implement condi
 ---------------------
 
 ### Screenshot:
+
+![ScreenShot](https://cloud.githubusercontent.com/assets/16979320/17159331/41a3cfdc-5351-11e6-9fe8-899592df81c7.png)
